@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import {Grid, CardGrid} from "../components/_styled"
-// import {motion} from "framer-motion"
-import { useParams} from "react-router-dom"
+
+import { useParams, Link} from "react-router-dom"
+
 
 
 
@@ -38,12 +39,20 @@ function Cuisine() {
 
 
   return (
-    <Grid>
+    <Grid
+      animate={{opacity: 1}}
+      initial={{opacity: 0}}
+      exit={{opacity: 0}}
+      transition={{duration: 0.5}}
+    >
+    
       {cuisine.map((item) => {
         return (
           <CardGrid key={item.id}>
-            <img src={item.image} alt={item.title}/>
-            <h4>{item.title}</h4>
+            <Link to={"/recipe/" + item.id}>
+              <img src={item.image} alt={item.title}/>
+              <h4>{item.title}</h4>
+            </Link>
           </CardGrid>
         )
       })}
