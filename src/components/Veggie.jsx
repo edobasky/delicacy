@@ -22,7 +22,7 @@ function Veggie() {
           
       }else {
 
-          const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=e66dd46963ae4fcf9b64510947e6eb0d&number=12&tags=vegetarian`);
+          const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=335844e247d94e4aad0753657efbd04e&number=12&tags=vegetarian`);
           const data = await api.json();
           localStorage.setItem("veggie", JSON.stringify(data.recipes));
           setVeggie(data.recipes);
@@ -46,8 +46,8 @@ function Veggie() {
         >
         {veggie.map((recipe) => {      
                return (
-                   <SplideSlide>
-                   <Card key={recipe.id}>
+                   <SplideSlide key={recipe.id}>
+                   <Card >
                      <p>{recipe.title}</p>
                     <img src={recipe.image} alt={recipe.title}/>
                     <Gradient />
